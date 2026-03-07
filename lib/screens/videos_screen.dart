@@ -298,13 +298,6 @@ class _VideosScreenState extends State<VideosScreen> {
                             const Color(0xFF8BA09E),
                             responsive,
                           ),
-                          const SizedBox(width: 6),
-                          _buildSmallBadge(
-                            'YouTube',
-                            Icons.play_circle_fill,
-                            Colors.red.shade400,
-                            responsive,
-                          ),
                         ],
                       ),
                     ],

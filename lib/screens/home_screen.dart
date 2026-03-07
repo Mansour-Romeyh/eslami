@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'prayer_times_screen.dart';
 import 'pdf_screen.dart';
+import 'videos_screen.dart';
 import 'adhkar_screen.dart';
 import 'tasbih_screen.dart';
 
@@ -72,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           children: [
             PrayerTimesScreen(),
             PDFScreen(),
+            VideosScreen(),
             AdhkarScreen(),
             TasbihScreen(),
           ],
@@ -137,11 +139,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     right: _currentIndex == 0
                         ? 0
                         : (_currentIndex == 1
-                              ? navWidth / 4
+                              ? navWidth / 5
                               : (_currentIndex == 2
-                                    ? (navWidth * 2) / 4
-                                    : (navWidth * 3) / 4)),
-                    width: navWidth / 4,
+                                    ? (navWidth * 2) / 5
+                                    : (_currentIndex == 3
+                                          ? (navWidth * 3) / 5
+                                          : (navWidth * 4) / 5))),
+                    width: navWidth / 5,
                     top: 0,
                     bottom: 0,
                     child: Container(
@@ -187,9 +191,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   ),
                   Expanded(
                     child: _buildNavItem(
+                      Icons.play_circle_fill,
+                      'المقاطع',
+                      2,
+                      responsive,
+                    ),
+                  ),
+                  Expanded(
+                    child: _buildNavItem(
                       Icons.menu_book_rounded,
                       'الأذكار',
-                      2,
+                      3,
                       responsive,
                     ),
                   ),
@@ -197,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     child: _buildNavItem(
                       Icons.fingerprint_rounded,
                       'سبحة',
-                      3,
+                      4,
                       responsive,
                     ),
                   ),
@@ -409,7 +421,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             'تحديد دقيق لمواعيد الصلاة بناءً على موقعك الجغرافي مع تنبيهات لكل صلاة.',
             themeController,
           ),
-
+          _buildAboutItem(
+            Icons.play_circle_fill,
+            'دروس مرئية',
+            'مجموعة مختارة من الدروس المرئية التي تشرح مضامين الكتاب بأسلوب ميسر.',
+            themeController,
+          ),
           _buildAboutItem(
             Icons.menu_book_rounded,
             'الأذكار اليومية',
